@@ -11,14 +11,12 @@ class DeviceLog(db.Model):
     temp = db.Column(db.Integer())
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
-    face = db.Column(db.Integer)
 
 
     def __init__(self, device_id, power, temp):
         self.device_id = device_id
         self.power = power
         self.temp = temp
-        self.face = 0
 
 #may want to change this according to http://stackoverflow.com/questions/7102754/jsonify-a-sqlalchemy-result-set-in-flask
 
