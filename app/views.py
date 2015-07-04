@@ -15,14 +15,15 @@ def get_data():
     json = request.get_json(force=True)
     try:
         log = DeviceLog(
-                    device_id=json.device_id,
-                    power = json.power,
-                    temp = json.temp
+                    device_id=json['device_id'],
+                    power = json['power'],
+                    temp = json['temp']
                 )
         db.session.add(log)
         db.session.commit()
-    except:
-        pass
+        return 'success'
+    except Exception as e:
+        return str(e)
 
 @app.route('/device/<id>')
 def show_logs(id):
