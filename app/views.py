@@ -9,6 +9,16 @@ from app.models import DeviceLog
 def index():
     return 'Hey Govhack'
 
+'''
+Example request:
+
+Header: application/json
+{
+   "device_id": "999",
+   "power": 999,
+   "temp": 999
+}
+'''
 
 @app.route('/'+os.environ['WRITE_URL'], methods=['GET', 'POST'])
 def get_data():
