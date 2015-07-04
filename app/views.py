@@ -19,6 +19,8 @@ def get_data():
                     power = json.power,
                     temp = json.temp
                 )
+        db.session.add(log)
+        db.session.commit()
     except:
         pass
 
