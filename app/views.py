@@ -1,6 +1,6 @@
 __author__ = 'jackgolding'
 import os
-from flask import request, redirect, url_for,flash
+from flask import request, redirect, url_for,flash, render_template
 from app import app, db
 from app.models import DeviceLog
 
@@ -37,9 +37,10 @@ def get_data():
 
 @app.route('/device/<id>')
 def show_logs(id):
-    id = DeviceLog.query.filter_by(device_id=id)
-    if id is None:
+    id_bool = DeviceLog.query.filter_by(device_id=id)
+    if id_bool is None:
         flash('Device {} not found').format(id)
         return redirect(url_for('index'))
     else:
-        return DeviceLog.query.filter_by(device_id=id)
+         logs = DeviceLog.query.filter_by(device_id=id).all()
+         return render_template('logs.html',logs=logs)

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Logs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+<table class="table-hover , table-bordered, table-condensed">
+<tr>
+<td>Log ID</td>
+<td>Device ID</td>
+<td>Power</td>
+<td>Temperature</td>
+<td>Time Stamp</td>
+</tr>
+{% for log in logs %}
+
+    <tr>
+    {% include 'log.html' %}
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
