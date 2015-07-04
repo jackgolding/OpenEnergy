@@ -1,7 +1,7 @@
 __author__ = 'jackgolding'
 import os
 from flask import request, redirect, url_for,flash
-from app import app
+from app import app, db
 from app.models import DeviceLog
 
 @app.route('/')
