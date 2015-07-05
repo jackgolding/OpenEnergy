@@ -39,7 +39,7 @@ def get_data():
 def show_logs(id):
     id_bool = DeviceLog.query.filter_by(device_id=id)
     if id_bool is None:
-        flash('Device {} not found').format(id)
+        flash('Device {} not found'.format(id))
         return redirect(url_for('index'))
     else:
          logs = DeviceLog.query.filter_by(device_id=id).all()
@@ -48,3 +48,7 @@ def show_logs(id):
 @app.route('/usage/<id>')
 def return_usage(id):
     return jsonify({"average": 17})
+
+@app.route('/plot/<id>')
+def return_data():
+    return DeviceLog.query.filter_by(device_id=id).order_by(DeviceLog.created_on).first()
