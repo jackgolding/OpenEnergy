@@ -31,9 +31,9 @@ def get_data():
                 )
         db.session.add(log)
         db.session.commit()
-        return 'success'
+        return 'NUL'
     except Exception as e:
-        return str(e)
+        return 'SOH'
 
 @app.route('/device/<id>')
 def show_logs(id):
