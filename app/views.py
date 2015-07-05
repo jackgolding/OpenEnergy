@@ -1,6 +1,6 @@
 __author__ = 'jackgolding'
 import os
-from flask import request, redirect, url_for,flash, render_template
+from flask import request, redirect, url_for,flash, render_template,jsonify
 from app import app, db
 from app.models import DeviceLog
 
@@ -27,7 +27,7 @@ def get_data():
         log = DeviceLog(
                     device_id=json['device_id'],
                     power = json['power'],
-                    temp = json['temp']
+                    temp = 23
                 )
         db.session.add(log)
         db.session.commit()
@@ -44,3 +44,7 @@ def show_logs(id):
     else:
          logs = DeviceLog.query.filter_by(device_id=id).all()
          return render_template('logs.html',logs=logs)
+
+@app.route('/usage/<id>')
+def return_usage(id):
+    return jsonify({"average": 17})
